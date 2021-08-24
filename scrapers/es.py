@@ -221,5 +221,7 @@ for name, a3c, es in zip(names, a3cs, ess):
     metric_name = name.lower().replace(" ", "_") + "_metric"
     a3c_score = float(a3c)
     es_score = float(es)
-    print metric_name + ".measure(None, "+ `es_score` + ', "ES (1 hour)", url="https://arxiv.org/abs/1703.03864v1")'
-    print metric_name + ".measure(None, "+ `a3c_score` + ', "A3C FF (1 day)", url="https://arxiv.org/abs/1703.03864v1", algorithm_src_url="https://arxiv.org/pdf/1602.01783.pdf", min_date=date(2016,2,4))'
+    print(metric_name + ".measure(None, " + repr(
+        es_score) + ', "ES (1 hour)", url="https://arxiv.org/abs/1703.03864v1")')
+    print(metric_name + ".measure(None, " + repr(
+        a3c_score) + ', "A3C FF (1 day)", url="https://arxiv.org/abs/1703.03864v1", algorithm_src_url="https://arxiv.org/pdf/1602.01783.pdf", min_date=date(2016,2,4))')

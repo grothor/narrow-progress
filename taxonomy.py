@@ -135,7 +135,7 @@ class Metric:
         try:
             m = Measurement(*args, **kwargs)
         except AssertionError:
-            print("WARNING, failed to create measurement", args, kwargs)
+            print("WARNING, failed to create measurement for" + self.name, args, kwargs)
             traceback.print_exc()
             return None
         m.metric = self

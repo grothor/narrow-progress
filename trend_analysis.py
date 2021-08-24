@@ -161,7 +161,7 @@ def get_node(eff_problem, extrapolate=False, write_linear_data=False, verbose=Fa
         if verbose:
             print("{eff_problem} has subproblems:".format(eff_problem=eff_problem))
         for sub in eff_problem.subproblems:
-            get_node(sub, extrapolate=extrapolate, write_linear_data=write_linear_data)
+            get_node(sub, extrapolate=extrapolate, write_linear_data=write_linear_data, verbose=verbose, skip_atari=skip_atari)
     if eff_problem.metrics:
         if verbose:
             print("{eff_problem} has metrics:".format(eff_problem=eff_problem))
@@ -336,6 +336,12 @@ def getExtrapolation(metric, alt_target=None):
     metric.extrapolation = extrapolation
     return extrapolation
 
+def getFrontierVariances(metrics):
+    frontier_variances = {"gaps": [], "advances": [], "rates": []}
+    for metric in metrics:
+        frontier = metric.frontier
+
+
 all_problems = Problem("All problems")
 
 for item in problems.values():
@@ -346,7 +352,7 @@ for item in problems.values():
 
 import scrapers.atari
 
-get_node(all_problems, extrapolate=True, write_linear_data=True)
+get_node(all_problems, extrapolate=True, write_linear_data=True, skip_atari=True)
 
 
 # get_node(awty.vision, extrapolate=True, write_linear_data=True)
